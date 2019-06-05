@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pyl.demo.dao.mapper.TSFunctionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pyl.demo.dao.entity.TSFunction">
+        <id column="ID" property="id" />
+        <result column="functioniframe" property="functioniframe" />
+        <result column="functionlevel" property="functionlevel" />
+        <result column="functionname" property="functionname" />
+        <result column="functionorder" property="functionorder" />
+        <result column="functionurl" property="functionurl" />
+        <result column="parentfunctionid" property="parentfunctionid" />
+        <result column="iconid" property="iconid" />
+        <result column="desk_iconid" property="deskIconid" />
+        <result column="functiontype" property="functiontype" />
+        <result column="function_icon_style" property="functionIconStyle" />
+        <result column="create_by" property="createBy" />
+        <result column="create_name" property="createName" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_date" property="updateDate" />
+        <result column="create_date" property="createDate" />
+        <result column="update_name" property="updateName" />
+    </resultMap>
+
+</mapper>

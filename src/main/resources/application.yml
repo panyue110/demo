@@ -1,0 +1,40 @@
+server:
+  port : 8087
+  tomcat:
+    max-threads: 1000
+    uri-encoding: UTF-8
+spring:
+  resources:
+    chain:
+      #在资源链中启用缓存
+      cache: true
+      #启用Spring资源处理链。，默认情况下禁用除非启用了至少一个策略。
+      enabled: true
+      html-application-cache: true
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+    add-mappings: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: true
+    mode : HTML5
+  cache:
+    #缓存名称
+    cache-names: demo
+    #缓存最大数量800条, 缓存失效时间 6个小时
+    guava.spec: maximumSize=800,expireAfterWrite=360m
+  profiles:
+    active: dev
+
+mybatis-plus:
+  # 配置映射类所在包名
+  type-aliases-package: com.pyl.demo.dao
+  # 配置mapper xml文件所在路径，这里是一个数组
+  mapper-locations: classpath*:com/pyl/demo/dao/**/*.xml
+  configuration:
+    call-setters-on-nulls: true
+
+#打印sql语句
+logging:
+  level:
+    com.cqpi : debug
