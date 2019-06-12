@@ -48,7 +48,6 @@ var loadLeftMenus = function (parentId) {
                     childHtml+='</dl>';
                     html+=childHtml;
                 }
-
             });
             $("#left-menu").empty().html(html);
         }
