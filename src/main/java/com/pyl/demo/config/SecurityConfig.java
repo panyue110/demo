@@ -26,13 +26,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/index")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login")//退出之后跳转到注册页面
+                .logoutSuccessUrl("/login")
+                .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .and().rememberMe()
-                .tokenValiditySeconds(1209600);
-
+                .tokenValiditySeconds(1209600)
+                .and().csrf().disable();
 
     }
+
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
