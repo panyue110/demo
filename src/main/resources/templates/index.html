@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link rel="stylesheet" th:href="@{assets/layui/css/layui.css}" />
+    <link rel="stylesheet" th:href="@{/assets/layui/css/layui.css}" />
+
     <script th:src="@{/assets/js/jquery-2.1.4.min.js}"></script>
     <script th:src="@{/assets/layui/layui.js}"></script>
     <script th:src="@{/index.js}"></script>
+    <style>
+        .layadmin-iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 60px;
+            right: 0;
+            bottom: 0;
+        }
+
+
+    </style>
 </head>
 
 <body class="layui-layout-body">
@@ -15,7 +29,7 @@
     <div class="layui-header">
         <div class="layui-logo">layui 后台布局</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left" id = "top-menu">
+        <ul class="layui-nav layui-layout-left" id = "top-menu" lay-filter="top-menu" >
 
 
 
@@ -24,10 +38,10 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    <span id="username" th:text="${session.SPRING_SECURITY_CONTEXT.authentication.principal.realname}"></span>
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
+                    <dd><a  href="javascript:void(0);" id="tabUserInfo" data-id="info" data-name="基本资料" data-url="/tSUser/userInfo">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
@@ -38,9 +52,9 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test" id="left-menu">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="left-menu" id="left-menu">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;" >所有商品</a>
+                    <a class="" href="javascript:void(0);" onclick="menuOCK('/tSUser/userInfo')" >所有商品</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">列表一</a></dd>
                         <dd><a href="javascript:;">列表二</a></dd>
@@ -62,10 +76,26 @@
         </div>
     </div>
 
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+    <div class="layui-body" style="overflow-y: hidden">
+        <div id="main-tab" class="layui-tab" lay-filter="main-tab" lay-allowclose="true">
+            <ul class="layui-tab-title">
+            </ul>
+            <div class="layui-tab-content">
+            </div>
+        </div>
     </div>
+
+
+
+
+<!--    <div class="layui-body">-->
+<!--        &lt;!&ndash; 内容主体区域 &ndash;&gt;-->
+<!--        <div id="main-content">-->
+<!--&lt;!&ndash;            <iframe id="iframe" src="">&ndash;&gt;-->
+
+<!--&lt;!&ndash;            </iframe>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->

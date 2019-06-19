@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pyl.demo.dao.mapper.TSUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pyl.demo.dao.entity.TSUser">
+        <id column="id" property="id" />
+        <result column="email" property="email" />
+        <result column="mobilePhone" property="mobilePhone" />
+        <result column="officePhone" property="officePhone" />
+        <result column="signatureFile" property="signatureFile" />
+        <result column="update_name" property="updateName" />
+        <result column="update_date" property="updateDate" />
+        <result column="update_by" property="updateBy" />
+        <result column="create_name" property="createName" />
+        <result column="create_date" property="createDate" />
+        <result column="create_by" property="createBy" />
+        <result column="portrait" property="portrait" />
+        <result column="imsign" property="imsign" />
+        <result column="dev_flag" property="devFlag" />
+        <result column="user_type" property="userType" />
+        <result column="person_type" property="personType" />
+        <result column="sex" property="sex" />
+        <result column="emp_no" property="empNo" />
+        <result column="citizen_no" property="citizenNo" />
+        <result column="fax" property="fax" />
+        <result column="address" property="address" />
+        <result column="post" property="post" />
+        <result column="memo" property="memo" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, email, mobilePhone, officePhone, signatureFile, update_name, update_date, update_by, create_name, create_date, create_by, portrait, imsign, dev_flag, user_type, person_type, sex, emp_no, citizen_no, fax, address, post, memo
+    </sql>
+
+</mapper>

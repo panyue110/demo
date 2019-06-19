@@ -23,4 +23,37 @@
         <result column="update_name" property="updateName" />
     </resultMap>
 
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List" >
+        ID, functioniframe, functionlevel, functionname, functionorder, functionurl, parentfunctionid, iconid, desk_iconid, functiontype, function_icon_style, create_by, create_name, update_by, update_date, create_date, update_name
+    </sql>
+
+    <sql id="column_List" >
+        f.ID, f.functioniframe, f.functionlevel, f.functionname, f.functionorder, f.functionurl, f.parentfunctionid, f.iconid, f.desk_iconid, f.functiontype, f.function_icon_style, f.create_by, f.create_name, f.update_by, f.update_date, f.create_date, f.update_name
+    </sql>
+
+    <select id="selectMenus" resultMap="BaseResultMap" >
+        SELECT
+            <include refid="column_List" />
+        FROM
+            t_s_function f
+        LEFT JOIN t_s_role_function rf ON f.id = rf.functionid
+        LEFT JOIN t_s_role_user ru ON ru.roleid = rf.roleid
+        LEFT JOIN t_s_base_user bu ON bu.id = ru.userid
+        WHERE
+            1=1
+        <if test="username != null and username !='' " >
+           and bu.username = #{username}
+        </if>
+        <if test="functionlevel != null and functionlevel !='' " >
+            and f.functionlevel = #{functionlevel}
+        </if>
+
+        <if test="parentfunctionid != null and parentfunctionid !='' " >
+            and f.parentfunctionid = #{parentfunctionid}
+        </if>
+
+        order by f.functionorder
+    </select>
+
 </mapper>

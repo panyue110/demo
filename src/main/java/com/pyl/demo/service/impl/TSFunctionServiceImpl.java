@@ -1,12 +1,12 @@
 package com.pyl.demo.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.pyl.demo.dao.entity.MyUserDetails;
 import com.pyl.demo.dao.entity.TSFunction;
 import com.pyl.demo.dao.mapper.TSFunctionMapper;
 import com.pyl.demo.dao.vo.TSFunctionVo;
 import com.pyl.demo.service.TSFunctionService;
+import com.pyl.demo.utils.UserUtilis;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,21 +30,15 @@ public class TSFunctionServiceImpl extends ServiceImpl<TSFunctionMapper, TSFunct
     @Override
     public List<TSFunctionVo> selectMenus(String functionlevel, String parentfunctionid) {
 
-        QueryWrapper<TSFunction> wrapper = new QueryWrapper<TSFunction>();
-        if (StringUtils.isNotEmpty(parentfunctionid)) {
-           wrapper.eq("parentfunctionid", parentfunctionid);
-        }
-        if (StringUtils.isNotEmpty(parentfunctionid)) {
-            wrapper.eq("functionlevel", functionlevel);
-        }
-        wrapper.orderByAsc("functionorder");
-        List<TSFunction> list = tsFunctionMapper.selectList(wrapper);
+        MyUserDetails userDetails = UserUtilis.getUserInfo();
+        List<TSFunction> list = tsFunctionMapper.selectMenus(functionlevel, parentfunctionid, userDetails.getUsername());
         List<TSFunctionVo> voList= new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            TSFunctionVo vo = new TSFunctionVo();
-            BeanUtils.copyProperties(list.get(i), vo);
-            voList.add(vo);
-
+        if (list != null && list.size()>0) {
+            for (int i = 0; i < list.size(); i++) {
+                TSFunctionVo vo = new TSFunctionVo();
+                BeanUtils.copyProperties(list.get(i), vo);
+                voList.add(vo);
+            }
         }
         return getTreeList("0",voList);
     }

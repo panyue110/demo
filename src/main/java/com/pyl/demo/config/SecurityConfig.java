@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private MyUserService myUserService;
+    private MyAuthenticationProvider provider;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -31,15 +31,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .and().rememberMe()
                 .tokenValiditySeconds(1209600)
-                .and().csrf().disable();
+                .and().csrf().disable()
+                .headers().frameOptions().sameOrigin();
 
     }
 
-
-
+    /**
+     * 自定义的用密码密码验证
+     * @param auth
+     * @throws Exception
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserService).passwordEncoder(new MyPasswordEncoder());
+        auth.authenticationProvider(provider);
     }
+
+
 
 }

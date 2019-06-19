@@ -16,8 +16,8 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
-    cache: true
-    mode : HTML5
+    cache: false
+    mode : LEGACYHTML5
   cache:
     #缓存名称
     cache-names: demo

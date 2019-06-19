@@ -44,9 +44,10 @@ public class CodeGenerator {
         gc.setFileOverride(true);
         gc.setActiveRecord(false);// 不需要ActiveRecord特性的请改为false
         gc.setEnableCache(false);// XML 二级缓存
+
         gc.setBaseResultMap(true);// XML ResultMap
-        gc.setBaseColumnList(false);// XML columList
-        gc.setAuthor("yux");// 作者
+        gc.setBaseColumnList(true);// XML columList
+        gc.setAuthor("panyue");// 作者
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         gc.setControllerName("%sController");
@@ -62,14 +63,14 @@ public class CodeGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("usbw");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3307/demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3307/jeecg?characterEncoding=utf8&useSSL=false&serverTimezone=UTC");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "t_s_function" }); // 需要生成的表
+        strategy.setInclude(new String[] { "t_s_function" , "t_s_role", "t_s_user","t_s_role_function","t_s_user_org","t_s_role_user","t_s_base_user"}); // 需要生成的表
 
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
