@@ -4,17 +4,23 @@ layui.use('element', function(){
     var $ = layui.jquery,
         element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
 
-    loadMenu(0,element);
+
 
     var addTab = function(id,name,url){
-
-        element.tabAdd('main-tab', {
-            title: name
-            ,content: '<iframe src="'+url+'" frameborder="0" class="layadmin-iframe"></iframe>'
-            ,id: id
-        });
+        var tab = $("li[lay-id='"+id+"']");
+        if (tab.length == 0) {
+            element.tabAdd('main-tab', {
+                title: name
+                ,content: '<iframe src="'+url+'" frameborder="0" class="layadmin-iframe"></iframe>'
+                ,id: id
+            });
+        }
         $("li[lay-id='"+id+"']").click();
     }
+    $('#home').on('click', function(){
+        $("#main-tab").find("ul .layui-this").removeClass("layui-this");
+        $(this).addClass("layui-this");
+    });
     //基本信息
     $('#tabUserInfo').on('click', function(){
         var id = $(this).attr("data-id");
@@ -28,6 +34,8 @@ layui.use('element', function(){
         var id = elem.attr("data-id");
         loadLeftMenus(id,element);
     });
+    //加载顶部菜单
+    loadMenu(0,element);
     //点击左边菜单，加载内容页
     element.on('nav(left-menu)', function(elem){
         var id = elem.attr("data-id");

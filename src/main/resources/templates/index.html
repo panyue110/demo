@@ -19,7 +19,13 @@
             right: 0;
             bottom: 0;
         }
-
+        .layui-tab-title .layui-this {
+            background-color: #f6f6f6;
+        }
+        html{
+            background-color: #f2f2f2;
+            color: #666;
+        }
 
     </style>
 </head>
@@ -53,49 +59,21 @@
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="left-menu" id="left-menu">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:void(0);" onclick="menuOCK('/tSUser/userInfo')" >所有商品</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="layui-body" style="overflow-y: hidden">
-        <div id="main-tab" class="layui-tab" lay-filter="main-tab" lay-allowclose="true">
-            <ul class="layui-tab-title">
+    <div class="layui-body" style="overflow-y: hidden; ">
+        <div id="main-tab" class="layui-tab" lay-filter="main-tab" lay-allowclose="true" style="margin:0; ">
+            <ul class="layui-tab-title" style="background-color: #fff;">
+                 <div id="home" class="layui-this" style="line-height: 40px;float: left">
+                     <i  class="layui-icon layui-icon-home" style="padding: 0px 10px;vertical-align: middle;"></i>
+                 </div>
             </ul>
             <div class="layui-tab-content">
             </div>
         </div>
     </div>
-
-
-
-
-<!--    <div class="layui-body">-->
-<!--        &lt;!&ndash; 内容主体区域 &ndash;&gt;-->
-<!--        <div id="main-content">-->
-<!--&lt;!&ndash;            <iframe id="iframe" src="">&ndash;&gt;-->
-
-<!--&lt;!&ndash;            </iframe>&ndash;&gt;-->
-<!--        </div>-->
-<!--    </div>-->
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
