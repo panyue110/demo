@@ -9,3 +9,5 @@ spring:
     url: jdbc:mysql://106.12.86.1:3306/jeecg?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&autoReconnect=true
     username: root
     password: password
+
+

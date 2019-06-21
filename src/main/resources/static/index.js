@@ -2,9 +2,7 @@ var menuTree;
 
 layui.use('element', function(){
     var $ = layui.jquery,
-        element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-
-
+        element = layui.element;
 
     var addTab = function(id,name,url){
         var tab = $("li[lay-id='"+id+"']");
@@ -21,8 +19,8 @@ layui.use('element', function(){
         $("#main-tab").find("ul .layui-this").removeClass("layui-this");
         $(this).addClass("layui-this");
     });
-    //基本信息
-    $('#tabUserInfo').on('click', function(){
+    //基本信息 、修改密码
+    $('.addTab').on('click', function(){
         var id = $(this).attr("data-id");
         var name = $(this).attr("data-name");
         var url = $(this).attr("data-url");
@@ -50,13 +48,6 @@ layui.use('element', function(){
         active[type] ? active[type].call(this, othis) : '';
     });
 
-    //Hash地址的定位
-    var layid = location.hash.replace(/^#test=/, '');
-    element.tabChange('test', layid);
-
-    element.on('tab(test)', function(elem){
-        location.hash = 'test='+ $(this).attr('lay-id');
-    });
 
 });
 
