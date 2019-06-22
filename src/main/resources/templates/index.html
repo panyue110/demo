@@ -18,6 +18,12 @@
     .layui-tab-title .layui-this {
         background-color: #f6f6f6;
     }
+    .home .layui-tab-close{
+        display: none!important;
+    }
+    .home {
+        min-width: 10px!important;
+    }
     html{
         background-color: #f2f2f2;
         color: #666;
@@ -60,11 +66,14 @@
     <div class="layui-body" style="overflow-y: hidden; ">
         <div id="main-tab" class="layui-tab" lay-filter="main-tab" lay-allowclose="true" style="margin:0; ">
             <ul class="layui-tab-title" style="background-color: #fff;">
-                 <div id="home" class="layui-this" style="line-height: 40px;float: left">
-                     <i  class="layui-icon layui-icon-home" style="padding: 0px 10px;vertical-align: middle;"></i>
-                 </div>
+                <li lay-id="homePage" class="home layui-this">
+                    <i  class="layui-icon layui-icon-home"></i>
+                </li>
             </ul>
             <div class="layui-tab-content">
+                <div  class="layui-tab-item layui-show">
+                    <iframe src="/home" frameborder="0" class="layadmin-iframe"></iframe>
+                </div>
             </div>
         </div>
     </div>

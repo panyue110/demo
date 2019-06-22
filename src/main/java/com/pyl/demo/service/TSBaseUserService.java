@@ -2,7 +2,7 @@ package com.pyl.demo.service;
 
 import com.pyl.demo.dao.entity.TSBaseUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.pyl.demo.dao.entity.TSUser;
+import com.pyl.demo.utils.Result;
 
 /**
  * <p>
@@ -20,4 +20,12 @@ public interface TSBaseUserService extends IService<TSBaseUser> {
      * @return
      */
     TSBaseUser loadUserByUserName(String username);
+
+    /**
+     * 修改密码
+     * @param password 新密码
+     * @param oldPassword 原密码
+     * @return
+     */
+    Result<TSBaseUser> updatePassword(String password, String oldPassword);
 }
