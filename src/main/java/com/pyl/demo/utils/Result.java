@@ -12,5 +12,7 @@ public class Result<T> {
 
     private String msg;
 
+    private Integer count;
+
     private T data;
 }

@@ -28,6 +28,7 @@ public class Response {
         return result;
     }
 
+
     public static <T> Result<T> Fail() {
         Result<T> result = new Result<T>();
         result.setCode(ResponseEnum.FAIL.getCode());
@@ -77,6 +78,15 @@ public class Response {
         result.setMsg(msgStr);
         result.setSuccess(ResponseEnum.ERROR.isSuccess());
         result.setData(data);
+        return result;
+    }
+
+
+    public static <T> Result<T> Page(T data,Integer count) {
+        Result<T> result = new Result<T>();
+        result.setCode(0);
+        result.setData(data);
+        result.setCount(count);
         return result;
     }
 

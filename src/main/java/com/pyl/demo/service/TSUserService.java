@@ -2,7 +2,9 @@ package com.pyl.demo.service;
 
 import com.pyl.demo.dao.entity.TSUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.pyl.demo.utils.RequestPage;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,4 +16,5 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 public interface TSUserService extends IService<TSUser> {
 
+    List<TSUser> queryList(RequestPage page);
 }

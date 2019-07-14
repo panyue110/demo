@@ -52,7 +52,7 @@
         <if test="parentfunctionid != null and parentfunctionid !='' " >
             and f.parentfunctionid = #{parentfunctionid}
         </if>
-
+         and f.functiontype='1'
         order by f.functionorder
     </select>
 
