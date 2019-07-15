@@ -3,7 +3,7 @@ package com.pyl.demo.controller;
 
 import com.pyl.demo.dao.entity.TSUser;
 import com.pyl.demo.service.TSUserService;
-import com.pyl.demo.utils.RequestPage;
+import com.pyl.demo.utils.Page;
 import com.pyl.demo.utils.Response;
 import com.pyl.demo.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +40,10 @@ public class TSUserController {
     }
     @RequestMapping("/query")
     @ResponseBody
-    public Result<List<TSUser>> query(RequestPage page){
+    public Result<List> query(Page page){
 
         List<TSUser> list = tsUserService.queryList(page);
-        return Response.Page(list,list.size());
+        return Response.Page(list,page);
     }
 }
 

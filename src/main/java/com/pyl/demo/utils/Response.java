@@ -2,6 +2,9 @@ package com.pyl.demo.utils;
 
 import com.pyl.demo.enums.ResponseEnum;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Response {
 
     public static <T> Result<T> Success() {
@@ -82,11 +85,16 @@ public class Response {
     }
 
 
-    public static <T> Result<T> Page(T data,Integer count) {
-        Result<T> result = new Result<T>();
+    public static <T> Result<List> Page(List<T> list,Page page) {
+        Result<List> result = new Result<List>();
         result.setCode(0);
-        result.setData(data);
-        result.setCount(count);
+        result.setCount(list.size());
+        int firstIndex = (page.getPage() - 1) * page.getLimit();
+        //到第几条数据结束
+        int lastIndex = page.getPage() + page.getLimit();
+        //直接在list中截取
+        list = list.subList(firstIndex, lastIndex);
+        result.setData(list);
         return result;
     }
 

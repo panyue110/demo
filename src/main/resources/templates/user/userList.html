@@ -31,7 +31,7 @@
             ,form = layui.form;
         var col=[
              {type: 'checkbox', fixed: 'left'}
-            ,{field: 'id', title: 'ID', width:200, sort: true, fixed: 'left', totalRowText: '合计：'}
+            ,{field: 'id', title: 'ID', width:200, sort: true, fixed: 'left'}
             ,{field: 'emp_no', title: '工号', width: 100}
             ,{field: 'citizen_no', title: '身份证号', width: 135, sort: true, totalRow: true}
             ,{field: 'sex', title: '性别', width: 200}
@@ -46,12 +46,10 @@
             elem:"#demo",
             height :550,
             url:"/tSUser/query",
-            page:true,
-            cols:[col],
-            jump: function(obj){
-             console.log(obj)
 
-            }
+            cols:[col],
+            page:true
+
         });
         //监听行工具事件
         table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"

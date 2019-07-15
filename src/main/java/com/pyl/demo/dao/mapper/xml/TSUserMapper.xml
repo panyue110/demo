@@ -34,4 +34,5 @@
         id, email, mobilePhone, officePhone, signatureFile, update_name, update_date, update_by, create_name, create_date, create_by, portrait, imsign, dev_flag, user_type, person_type, sex, emp_no, citizen_no, fax, address, post, memo
     </sql>
 
+
 </mapper>

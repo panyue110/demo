@@ -2,7 +2,7 @@ package com.pyl.demo.service;
 
 import com.pyl.demo.dao.entity.TSUser;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.pyl.demo.utils.RequestPage;
+import com.pyl.demo.utils.Page;
 
 import java.util.List;
 
@@ -16,5 +16,5 @@ import java.util.List;
  */
 public interface TSUserService extends IService<TSUser> {
 
-    List<TSUser> queryList(RequestPage page);
+    List<TSUser> queryList(Page page);
 }
