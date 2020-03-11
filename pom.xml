@@ -15,8 +15,15 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
+        <blade.tool.version>2.3.3</blade.tool.version>
         <java.version>1.8</java.version>
+        <swagger.version>2.9.2</swagger.version>
+        <swagger.models.version>1.5.21</swagger.models.version>
+        <protostuff.version>1.6.0</protostuff.version>
+
+        <mybatis.plus.version>3.1.1</mybatis.plus.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -46,16 +53,33 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.1.1</version>
+            <version>${mybatis.plus.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
-
-
+        <!--工具类-->
+        <dependency>
+            <groupId>org.springblade</groupId>
+            <artifactId>blade-core-tool</artifactId>
+            <version>${blade.tool.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springblade</groupId>
+                    <artifactId>blade-core-launch</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.springfox</groupId>
+                    <artifactId>springfox-swagger2</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>oio.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!--代码逆向生成-->
         <dependency>

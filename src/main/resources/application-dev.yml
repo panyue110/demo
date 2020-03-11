@@ -2,8 +2,7 @@ server:
   port : 8081
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3307/jeecg?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3307/demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: usbw
 #    url: jdbc:mysql://106.12.86.1:3306/jeecg?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&autoReconnect=true

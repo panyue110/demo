@@ -4,6 +4,7 @@ import com.pyl.demo.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -57,7 +58,6 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
 
         password= MD5Util.encode(password);
         if (!user.getPassword().equals(password)) {
-
             BadCredentialsException exception = new BadCredentialsException("账号不存在或密码错误");// 在界面输出自定义的信息！！
             throw exception;
         }

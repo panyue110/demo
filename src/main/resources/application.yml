@@ -14,7 +14,7 @@ spring:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
     add-mappings: true
   thymeleaf:
-    prefix: classpath:/templates/
+    prefix: classpath:/views/
     suffix: .html
     cache: false
     mode : LEGACYHTML5
@@ -27,10 +27,10 @@ spring:
     active: dev
 
 mybatis-plus:
-  # 配置映射类所在包名
-  type-aliases-package: com.pyl.demo.dao
   # 配置mapper xml文件所在路径，这里是一个数组
-  mapper-locations: classpath*:com/pyl/demo/dao/**/*.xml
+  mapper-locations: classpath:com/pyl/demo/**/xml/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.pyl.demo.**.entity
   configuration:
     call-setters-on-nulls: true
 

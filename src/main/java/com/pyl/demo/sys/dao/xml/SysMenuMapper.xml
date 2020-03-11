@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pyl.demo.sys.dao.mapper.SysMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.pyl.demo.sys.dao.entity.SysMenu">
+        <id column="id" property="id" />
+        <result column="parent_id" property="parentId" />
+        <result column="code" property="code" />
+        <result column="name" property="name" />
+        <result column="alias" property="alias" />
+        <result column="path" property="path" />
+        <result column="source" property="source" />
+        <result column="sort" property="sort" />
+        <result column="category" property="category" />
+        <result column="action" property="action" />
+        <result column="is_open" property="isOpen" />
+        <result column="remark" property="remark" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, parent_id, code, name, alias, path, source, sort, category, action, is_open, remark, is_deleted
+    </sql>
+
+    <select id="allMenu" resultMap="BaseResultMap">
+        select * from sys_menu where is_deleted = 0 and category = 1
+    </select>
+
+    <select id="roleMenu" resultMap="BaseResultMap">
+        select * from sys_menu where is_deleted = 0 and id IN ( SELECT menu_id FROM sys_role_menu WHERE role_id IN
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach> )
+    </select>
+</mapper>

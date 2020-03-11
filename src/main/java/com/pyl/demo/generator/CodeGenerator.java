@@ -63,14 +63,14 @@ public class CodeGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("usbw");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3307/jeecg?characterEncoding=utf8&useSSL=false&serverTimezone=UTC");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3307/demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setTablePrefix(new String[] { "sys_" });// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-        strategy.setInclude(new String[] { "t_s_function" , "t_s_role", "t_s_user","t_s_role_function","t_s_user_org","t_s_role_user","t_s_base_user"}); // 需要生成的表
+        strategy.setInclude(new String[] { "sys_dept" , "sys_dict", "sys_menu","sys_notice","sys_param","sys_role","sys_role_menu","sys_user","sys_tenant"}); // 需要生成的表
 
         strategy.setSuperServiceClass(null);
         strategy.setSuperServiceImplClass(null);
@@ -80,13 +80,13 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.pyl.demo");
+        pc.setParent("com.pyl.demo.sys");
         pc.setController("controller");
         pc.setService("service");
         pc.setServiceImpl("service.impl");
         pc.setMapper("dao.mapper");
         pc.setEntity("dao.entity");
-        pc.setXml("xml");
+        pc.setXml("dao.xml");
         mpg.setPackageInfo(pc);
 
         // 执行生成

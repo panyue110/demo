@@ -1,34 +1,34 @@
 package com.pyl.demo.config;
 
-import com.pyl.demo.dao.entity.MyUserDetails;
-import com.pyl.demo.dao.entity.TSBaseUser;
-import com.pyl.demo.service.TSBaseUserService;
+import com.pyl.demo.sys.dao.entity.LoginUser;
+import com.pyl.demo.sys.dao.entity.SysUser;
+import com.pyl.demo.sys.service.SysUserService;
+import org.springblade.core.tool.utils.Func;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private TSBaseUserService userSerivce;
+    private SysUserService sysUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        List<SysUser> users = sysUserService.loadUserByUsername(username);
 
-        TSBaseUser user = userSerivce.loadUserByUserName(username);
-        if(user!=null) {
-            MyUserDetails userDetails=new MyUserDetails(user.getUsername(),
-                    user.getRealname(),
+        if(Func.isNotEmpty(users)) {
+            SysUser user = users.get(0);
+            LoginUser userDetails = new LoginUser(user.getId(),
+                    user.getAccount(),
                     user.getPassword(),
-                    user.getDepartid(),
-                    "ROLE_ADMIN",
-                    true,
-                    true,
-                    true,
-                    true);
+                    user.getDeptId(),
+                    user.getRoleId());
 
             return userDetails;
         }
